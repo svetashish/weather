@@ -1,0 +1,92 @@
+.wrapperInfo{
+    height: 300px;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    .titleInfo {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .currencyDay {
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        display: flex;
+        .date {
+            display: inline-block;
+            width: 30%;
+        }
+
+        .description{
+            display: flex;
+            align-items: center;
+            
+        
+            &::before {
+                content: '·';
+                font-weight: 800;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .today {
+        display: flex;
+        
+        .tempreture {
+            width: 50%;
+            display: flex;
+            
+
+            &_icon {
+                display: flex;
+                align-items: center;
+            }
+            
+
+            &_now {
+                display: inline-block;
+                width: 65px;
+                height: 65px;
+                font-size: 44px;
+                
+                &::after {
+                    content: "°";
+                }
+            }
+
+            &_units{
+                display: inline-block;
+                margin-left: 5px;
+                padding-top: 10px;
+            
+                .celsius, .fahrenheit {
+                    display: inline-block;
+                    cursor: pointer;
+                    &_bold {
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .totalInfo {
+            width: 50%;
+        }
+
+    }
+
+    
+}
+
+p {
+    margin: 0;
+}

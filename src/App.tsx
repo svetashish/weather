@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import styles from './App.module.scss'
 
-function App() {
+import Coordinate from './components/Coordinate';
+import Information from './components/Information';
+
+import { ResponseCoordinateData, CoordinateData } from './types'
+
+export const AppContext = React.createContext({})
+
+const App = () => {
+
+  const [city, setCity] = useState<string>("");
+  const [data, setData] = useState<ResponseCoordinateData>();
+
+  const params:CoordinateData = {
+        q: '',
+        limit: 5,
+        appid: "1c5da32bd6a0d1c4c017b21b49833c7f",
+    }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={styles.main_page}>
+        <AppContext.Provider value={{
+          city,
+          setCity,
+          data,
+          setData,
+          params
+        }}>
+
+            <Coordinate />
+            <Information />
+
+     </AppContext.Provider>
+
     </div>
   );
 }
