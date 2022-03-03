@@ -1,0 +1,17 @@
+.wrapperBlockForecast{
+    height: 45%;
+    display: flex;
+
+    .dailyForecast{
+        padding: 20px 17px;
+        width: 12.5%;
+        border: 1px solid #969696;
+        cursor: pointer;
+        box-sizing: border-box;
+   
+        &:hover {
+            background: #F7F7F7;
+        }
+    }
+ 
+}

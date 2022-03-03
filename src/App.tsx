@@ -6,12 +6,13 @@ import Information from './components/Information';
 
 import { ResponseCoordinateData, CoordinateData } from './types'
 
-export const AppContext = React.createContext({})
+export const AppContext = React.createContext<any | null>(null)
 
 const App = () => {
 
   const [city, setCity] = useState<string>("");
   const [data, setData] = useState<ResponseCoordinateData>();
+  const [arrayForecast, setArrayForecast] = useState<Array<any>>();
 
   const params:CoordinateData = {
         q: '',
@@ -28,7 +29,9 @@ const App = () => {
           setCity,
           data,
           setData,
-          params
+          params,
+          arrayForecast,
+          setArrayForecast
         }}>
 
             <Coordinate />

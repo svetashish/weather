@@ -12,7 +12,6 @@ const Coordinate = () => {
     const {setData, setCity, params} = useContext<any>(AppContext)
     
     const handleOnChange = (event: any) => {    //attention
-       
         handleSearch(event.target.value);      
     };
 

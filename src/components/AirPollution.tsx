@@ -20,9 +20,7 @@ const AirPollution = () => {
                         appid: params.appid,
                      });
 
-                   const dataNO2 =  list[0].components.no2;
-
-                   console.log(dataNO2);                 
+                   const dataNO2 =  list[0].components.no2;      
 
                    if (dataNO2 >= 0 && dataNO2 < 50 ){
                     setPollution(ArrayPollution[0]);

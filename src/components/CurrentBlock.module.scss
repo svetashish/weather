@@ -1,0 +1,97 @@
+.wrapperInfo{
+    min-height: 55%;
+    padding: 20px;
+    box-sizing: border-box;
+   
+    .titleInfo {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .currencyDay {
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        display: flex;
+        .date {
+            display: flex;
+            align-items: center;
+            width: 30%;
+            margin-right: 5px;
+        }
+
+        .description{
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '·';
+                font-weight: 800;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .today {
+        display: flex;
+        
+        .tempreture {
+            width: 50%;
+            display: flex;
+            
+            &_icon {
+                display: flex;
+                align-items: center;
+            }
+            
+            &_now {
+                display: inline-block;
+                width: 65px;
+                height: 65px;
+                font-size: 44px;
+                
+                &::after {
+                    content: "°";
+                }
+            }
+
+            &_units{
+                display: inline-block;
+                margin-left: 5px;
+                padding-top: 10px;
+            
+                .celsius, .fahrenheit {
+                    display: inline-block;
+                    cursor: pointer;
+                    &_bold {
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .totalInfo {
+            width: 50%;
+            .windDerection {
+                padding-left: 5px;
+            }
+        }
+    }
+
+    .forecastModule {
+        display: flex;
+        &_oneBlock{
+            width: 12.5%;
+            height: 140px;
+        }
+    }
+}
+
+p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+}
