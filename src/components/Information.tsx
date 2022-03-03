@@ -5,23 +5,25 @@ import styles from './Information.module.scss';
 import { AppContext } from "../App";
 
 
-
-
 const Information = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const {data,city} = useContext<any>(AppContext);
+    const [initialState, setInitialState] = useState<string | null>("");
     
+    const {data,city} = useContext<any>(AppContext);
+
     useEffect(() => {
         if (city) {
+            setInitialState("Loading data..");
             setIsLoading(true);
         } else {
+            setInitialState('')
             setIsLoading(false);
         }
     },[city])
 
     return(
         <div className={styles.wrapper}>
-            {!isLoading && "Loading data.."}
+            {!isLoading && initialState }
             {isLoading && !data && 
                 <div className={styles.error}>
                     <img src='../assets/notfound.png' alt="not found" />
@@ -36,6 +38,6 @@ const Information = () => {
             }
         </div>
     )
-}
+};
 
-export default Information
+export default React.memo(Information);

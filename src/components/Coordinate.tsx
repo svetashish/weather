@@ -11,7 +11,7 @@ import { AppContext } from '../App';
 const Coordinate = () => {
     const {setData, setCity, params} = useContext<any>(AppContext)
     
-    const handleOnChange = (event: any) => {    //attention
+    const handleOnChange = (event: any) => {    //don't remember correct type for event
         handleSearch(event.target.value);      
     };
 
@@ -25,9 +25,7 @@ const Coordinate = () => {
 
             } catch (error) {
                 console.log(error)
-            }
-           
-            
+            }         
         }, 2000),
         []);
 

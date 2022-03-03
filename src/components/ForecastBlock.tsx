@@ -4,14 +4,10 @@ import { AppContext } from "../App";
 import Forecast from "./Forecast";
 
 
-
 const ForecastBlock = () => {
 
     const {arrayForecast} = useContext<any>(AppContext);
-
-    console.log(arrayForecast);
-    
-
+  
     return(
         <div className={styles.wrapperBlockForecast}>
           {arrayForecast && 
@@ -32,4 +28,4 @@ const ForecastBlock = () => {
     )
 };
 
-export default ForecastBlock;
+export default React.memo(ForecastBlock);

@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type CoordinateData = {
     q: string,
     limit: number,
@@ -20,4 +22,83 @@ export type ResponseCoordinateData = {
     name: string,
     state: string,
 };
+
+
+export type DegFlag = {
+    units: string,
+    speed: string,
+};
+
+
+export type CurrentDay = {
+    clouds: number,
+    dew_point: number,
+    dt: number,
+    feels_like: number 
+    humidity: number,
+    pressure: number,
+    sunrise?: number,
+    sunset?: number,
+    temp: number,
+    uvi: number,
+    visibility: number,
+    weather: Array<WeatherType>
+    wind_deg: number,
+    wind_gust: number,
+    wind_speed: number,
+};
+
+export type WeatherType = {
+    description: string,
+    icon: string,
+    id: number,
+    main: string,
+
+};
+
+export type ResponseType = {
+    current: CurrentDay,
+    daily?: Array<ForecastDayType>
+    hourly?: Array<ForecastDayType>
+    lat: number,
+    lon: number
+    timezone: string
+    timezone_offset: number,
+};
+
+export type ForecastDayType = {
+    clouds: number,
+    dew_point: number,
+    dt: number,
+    feels_like: number | {
+        day: number,
+        night: number, 
+        eve: number, 
+        morn: number,
+    },
+    moon_phase?: number,
+    moonrise?: number,
+    moonset?: number,
+    pop?: number,
+    humidity: number,
+    pressure: number,
+    sunrise?: number,
+    sunset?: number,
+    temp: number | {
+        day: number,
+        eve: number,
+        max: number,
+        min: number,
+        morn: number,
+        night: number,
+    },
+    uvi: number,
+    visibility: number,
+    weather: Array<WeatherType>
+    wind_deg: number,
+    wind_gust: number,
+    wind_speed: number,
+    snow?: number,
+};
+
 

@@ -5,27 +5,24 @@ import moment from "moment";
 import { currentForecastAPI } from '../services/api';
 import { AppContext } from "../App";
 import AirPollution from './AirPollution';
-
+import { DegFlag, CurrentDay } from '../types'
 
 
 const CurrentBlock = () => {
-    const [currentForecast, setCurrentForecast] = useState<any>();
-    const [flag, setFlag] = useState<any>({
+    const [currentForecast, setCurrentForecast] = useState<CurrentDay>();
+    const [flag, setFlag] = useState<DegFlag>({
         units: "metric",
         speed: "KPH",
     });
-    const [icon, setIcon] = useState<any>();
+    const [icon, setIcon] = useState<string>();
     const [windDeg, setWindDeg] = useState<string | null>(null);
     const [date, setDate] = useState<any>();
     
-
     const {data, city, params, setArrayForecast} = useContext<any>(AppContext);
 
     useEffect (() => {
         setDate(moment().format('dddd, h:mm a'))
     },[])
-
- 
 
     useEffect (() => {
 
@@ -66,7 +63,6 @@ const CurrentBlock = () => {
                                             :  deg === 270
                                                 ? setWindDeg("W")
                                                 : setWindDeg("No data for wind derection")
-
                 } catch (error) {
                     console.log(error)
                 }

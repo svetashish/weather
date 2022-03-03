@@ -56,5 +56,4 @@ const AirPollution = () => {
     )
 };
 
-
 export default React.memo(AirPollution);

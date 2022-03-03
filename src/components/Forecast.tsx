@@ -17,4 +17,4 @@ const Forecast = ({index, icon, maxTemp, minTemp}: any) => {
     )
 };
 
-export default Forecast;
+export default React.memo(Forecast);
