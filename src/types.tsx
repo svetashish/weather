@@ -7,9 +7,9 @@ export type CoordinateData = {
 export type CityData = {
     lat: number,
     lon: number,
-    exclude: string,
+    exclude?: string,
     appid: string,
-    units: string,
+    units?: string,
 };
 
 export type ResponseCoordinateData = {

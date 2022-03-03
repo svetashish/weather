@@ -20,3 +20,11 @@ export const coordinatesAPI = {
       return response.data;
     },
   };
+
+  
+  export const airPollutionAPI = {
+    async getPollution(data: CityData): Promise<any> {
+      const response = await api.get<any>("/data/2.5/air_pollution", { params: { ...data }});
+      return response.data;
+    },
+  };
