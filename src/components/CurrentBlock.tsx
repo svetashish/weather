@@ -10,7 +10,7 @@ import { NewDateContex } from './Information';
 
 
 const CurrentBlock = () => {
-    const [currentForecast, setCurrentForecast] = useState<any>();
+    const [currentForecast, setCurrentForecast] = useState<any>(); // type CurrentDay, but I have some bugs when change day from ForecastBlock with temp.max (here line: 124). My idea in types.tsx don't work correctly , so "any"
     const [flag, setFlag] = useState<DegFlag>({
         units: "metric",
         speed: "KPH",
@@ -23,13 +23,11 @@ const CurrentBlock = () => {
     const {newForecast} = useContext<any>(NewDateContex)
 
 
-
     useEffect (() => {
         setDate(moment().format('dddd, h:mm a'))
     },[])
 
     useEffect (() => {
-
         if (data){
             (async () => {
                 try {
