@@ -6,23 +6,27 @@ export type CoordinateData = {
     appid: string,
 };
 
+export type Coordinate ={
+ 
+
+}
+
 export type CityData = {
-    lat: number,
-    lon: number,
+    lat?: number,
+    lon?: number,
     exclude?: string,
     appid: string,
     units?: string,
 };
 
 export type ResponseCoordinateData = {
-    country: string,
-    lat: number,
-    local_names: Object, // description Object is difficult
-    lon: number,
-    name: string,
-    state: string,
+    country?: string,
+    lat?: number,
+    local_names?: Object, // description Object is difficult
+    lon?: number,
+    name?: string,
+    state?: string,
 };
-
 
 export type DegFlag = {
     units: string,
@@ -39,7 +43,7 @@ export type CurrentDay = {
     pressure: number,
     sunrise?: number,
     sunset?: number,
-    temp: number,
+    temp: number | Object,
     uvi: number,
     visibility: number,
     weather: Array<WeatherType>
@@ -58,11 +62,11 @@ export type WeatherType = {
 
 export type ResponseType = {
     current: CurrentDay,
-    daily?: Array<ForecastDayType>
+    daily: Array<ForecastDayType>
     hourly?: Array<ForecastDayType>
     lat: number,
-    lon: number
-    timezone: string
+    lon: number,
+    timezone: string,
     timezone_offset: number,
 };
 
@@ -101,4 +105,40 @@ export type ForecastDayType = {
     snow?: number,
 };
 
+export type PollutionType = {
+    coord: {
+        lon: number,
+        lat: number,
+    },
+    list: Array<DataList>,
+};
 
+export type DataList = {
+    components: {
+        co: number,
+        nh3: number,
+        no: number,
+        no2: number,
+        o3: number,
+        pm2_5: number,
+        pm10: number,
+        so2: number,
+    },
+    dt: number,
+    main: {
+        aqi: number,
+    },
+}
+
+//context
+
+export type AppContextType = {
+    city: string,
+    setCity: (city: string,) => {},
+    data: ResponseCoordinateData,
+    setData: (data: ResponseCoordinateData) => {},
+    params: CoordinateData
+    arrayForecast: Array<ForecastDayType>,
+    setArrayForecast: (arrayForecast: Array<ForecastDayType>) => {},
+
+}

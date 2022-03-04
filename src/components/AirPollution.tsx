@@ -2,13 +2,14 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import { airPollutionAPI } from '../services/api';
 import { AppContext } from "../App";
+import { AppContextType } from '../types';
 
 const ArrayPollution = ['Good', 'Fair', 'Moderate', 'Poor', 'Very Poor'];
 
 const AirPollution = () => {
     const [pollution, setPollution] = useState<string | null>(null);
 
-    const {data, params} = useContext<any>(AppContext);
+    const {data, params} = useContext<AppContextType>(AppContext);
 
     useEffect(() => {
         if (data){
@@ -49,10 +50,7 @@ const AirPollution = () => {
     },[data])
 
     return (
-        <> {data &&
-             pollution
-             }
-        </>
+        <>{data && pollution}</>
     )
 };
 

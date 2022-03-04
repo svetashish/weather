@@ -4,7 +4,7 @@ import styles from './App.module.scss'
 import Coordinate from './components/Coordinate';
 import Information from './components/Information';
 
-import { ResponseCoordinateData, CoordinateData } from './types'
+import { ResponseCoordinateData, CoordinateData, ForecastDayType } from './types'
 
 export const AppContext = React.createContext<any | null>(null)
 
@@ -12,7 +12,7 @@ const App = () => {
 
   const [city, setCity] = useState<string>("");
   const [data, setData] = useState<ResponseCoordinateData>();
-  const [arrayForecast, setArrayForecast] = useState<Array<any>>();
+  const [arrayForecast, setArrayForecast] = useState<Array<ForecastDayType>>();
 
   const params:CoordinateData = {
         q: '',

@@ -5,11 +5,12 @@ import moment from "moment";
 import { currentForecastAPI } from '../services/api';
 import { AppContext } from "../App";
 import AirPollution from './AirPollution';
-import { DegFlag, CurrentDay } from '../types'
+import { DegFlag, CurrentDay, AppContextType } from '../types';
+import { NewDateContex } from './Information';
 
 
 const CurrentBlock = () => {
-    const [currentForecast, setCurrentForecast] = useState<CurrentDay>();
+    const [currentForecast, setCurrentForecast] = useState<any>();
     const [flag, setFlag] = useState<DegFlag>({
         units: "metric",
         speed: "KPH",
@@ -18,7 +19,10 @@ const CurrentBlock = () => {
     const [windDeg, setWindDeg] = useState<string | null>(null);
     const [date, setDate] = useState<any>();
     
-    const {data, city, params, setArrayForecast} = useContext<any>(AppContext);
+    const {data, city, params, setArrayForecast} = useContext<AppContextType>(AppContext);
+    const {newForecast} = useContext<any>(NewDateContex)
+
+
 
     useEffect (() => {
         setDate(moment().format('dddd, h:mm a'))
@@ -37,12 +41,12 @@ const CurrentBlock = () => {
                         units: flag.units,  
                     });
                     
-                    console.log(response);
-                    
                     setCurrentForecast(response.current);
                     setIcon(response.current.weather[0].icon);
                     setArrayForecast(response.daily);
-                    console.log(response.daily)
+
+                    console.log(response.daily);
+                    
 
                     const deg = response.current.wind_deg;
 
@@ -69,6 +73,12 @@ const CurrentBlock = () => {
             })();
         }        
     },[data, flag.units])
+
+
+    useEffect(() => {
+        setCurrentForecast(newForecast);
+        
+    }, [newForecast])
 
 
 const  handleOnClickC = () => {
@@ -110,7 +120,10 @@ const  handleOnClickF = () => {
                                 <div className={styles.tempreture_icon}>
                                     <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt='icon'></img>
                                     <span className={styles.tempreture_now}>
-                                        {Math.round(currentForecast.temp)}
+                                        {currentForecast.temp.max 
+                                            ? Math.round(currentForecast.temp.max)
+                                            : Math.round(currentForecast.temp)
+                                        }
                                     </span>
                                 </div>
                                 <div className={styles.tempreture_units}>
@@ -128,9 +141,12 @@ const  handleOnClickF = () => {
                                 <p>Wind: {currentForecast.wind_speed} {flag.speed} 
                                     <span className={styles.windDerection}>{windDeg}</span>
                                 </p>
-                                <p>Ait Quality:
-                                    <span><AirPollution/></span>
-                                </p>
+
+                                {!newForecast &&
+                                    <p>Ait Quality:
+                                        <span><AirPollution/></span>
+                                    </p>
+                                }       
                             </div>
                         </div>
                     </>

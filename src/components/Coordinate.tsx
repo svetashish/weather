@@ -4,14 +4,14 @@ import debounce from "lodash.debounce";
 import styles from './Coordinate.module.scss';
 
 import { coordinatesAPI } from '../services/api';
-import { CoordinateData } from '../types'
+import { AppContextType } from '../types'
 import { AppContext } from '../App';
 
 
 const Coordinate = () => {
-    const {setData, setCity, params} = useContext<any>(AppContext)
+    const {setData, setCity, params} = useContext<AppContextType>(AppContext);
     
-    const handleOnChange = (event: any) => {    //don't remember correct type for event
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {   
         handleSearch(event.target.value);      
     };
 

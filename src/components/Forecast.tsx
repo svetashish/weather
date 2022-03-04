@@ -1,9 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import  styles from './Forecast.module.scss'
 
 import moment from "moment";
 
-const Forecast = ({index, icon, maxTemp, minTemp}: any) => {
+type PropsType = {
+    index: number,
+    icon: string,
+    maxTemp: number,
+    minTemp: number
+}
+
+const Forecast: FC<PropsType> = ({index, icon, maxTemp, minTemp}) => {
 
     return (
         <>
